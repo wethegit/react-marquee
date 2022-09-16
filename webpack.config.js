@@ -12,6 +12,9 @@ module.exports = {
     globalObject: 'this',
     clean: true,
   },
+  externals: {
+    react: "react"
+  },
   module: {
     rules: [
       {
