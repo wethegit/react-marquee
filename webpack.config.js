@@ -12,12 +12,14 @@ module.exports = {
     globalObject: 'this',
     clean: true,
   },
+  externals: {
+    react: "react"
+  },
   module: {
     rules: [
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
           'css-loader',
           'sass-loader',
         ],
