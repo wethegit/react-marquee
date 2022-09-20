@@ -1,6 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import external from 'rollup-plugin-peer-deps-external';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import sass from 'rollup-plugin-sass';
 import resolve from '@rollup/plugin-node-resolve';
@@ -22,7 +22,7 @@ export default {
     }
   ],
   plugins: [
-    external(),
+    peerDepsExternal(),
     postcss(),
     sass(),
     babel({

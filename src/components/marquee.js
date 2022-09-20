@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react"
-
 import styles from "./marquee.module.scss"
 import "../styles/globals.scss"
 
@@ -64,14 +63,14 @@ const Marquee = ({ speed, children }) => {
   }
 
   useEffect(() => {
-    getNumber();
-    
+    handleResize();
+
     window.addEventListener("resize", handleResize)
 
     return () => {
       window.removeEventListener("resize", handleResize)
     }
-  }, [])
+  }, [getNumber])
 
   return (
     <div
