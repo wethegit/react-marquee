@@ -11,6 +11,7 @@ import pkg from './package.json';
 
 export default {
   input: './src/components/marquee.js',
+  external: ['./src/components/marquee.module.scss', './src/styles/globals.scss'],
   output: [
     {
       file: pkg.main,
@@ -24,7 +25,10 @@ export default {
   plugins: [
     peerDepsExternal(),
     postcss(),
-    sass(),
+    sass({
+      insert: true,
+      output: true,
+    }),
     babel({
       exclude: 'node_modules/**'
     }),

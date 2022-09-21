@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
-import styles from "./marquee.module.scss"
+import "./marquee.module.scss"
 import "../styles/globals.scss"
 
 const Marquee = ({ speed, children }) => {
@@ -46,7 +46,7 @@ const Marquee = ({ speed, children }) => {
 
     for (let index = 0; index < neededAmount; index++) {
       marquees.push(
-        <div className={styles.marquee} key={index}>
+        <div className={'marquee'} key={index}>
           {children}
         </div>
       )
@@ -75,13 +75,13 @@ const Marquee = ({ speed, children }) => {
   return (
     <div
       ref={container}
-      className={styles.marqueeContainer}
+      className={'marqueeContainer'}
       style={{
         "--marquee-width": marqueeWidth,
         "--duration": duration + `s`,
       }}
     >
-      <div ref={marquee} className={styles.marquee}>
+      <div ref={marquee} className={'marquee'}>
         {children}
       </div>
 

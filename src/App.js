@@ -1,5 +1,7 @@
 import React from 'react';
-import Marquee from './components/marquee';
+import Marquee from './components/index.cjs.js';
+// import './components/index.cjs.css'
+import "./styles/globals.scss";
 
 function App() {
   return (
