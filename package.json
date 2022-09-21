@@ -1,5 +1,5 @@
 {
-  "name": "react-marquee",
+  "name": "@wethegit/react-marquee",
   "version": "0.1.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
