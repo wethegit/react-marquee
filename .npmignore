@@ -1,6 +1,5 @@
-.eslintrc.yml
-.github
-.prettierignore
-.prettierrc.yml
-.stylelintrc.yml
 src
+rollup.*
+.babelrc
+.eslintrc
+stats.html
