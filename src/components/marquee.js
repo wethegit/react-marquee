@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { classnames } from "../lib/classnames";
 
 // styles
-import "./marquee-video.scss";
+import "./marquee.scss";
 
 export const Marquee = ({
   speed = 50,

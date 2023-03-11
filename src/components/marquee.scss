@@ -1,5 +1,5 @@
 .marquee {
-  animation: scroll duration(var(--duration)) linear infinite;
+  animation: scroll var(--duration) linear infinite;
   position: relative;
   white-space: nowrap;
 
