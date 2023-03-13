@@ -1,13 +1,12 @@
 # @wethegit/react-marquee
 
-- [@wethegit/react-marquee](#wethegitreact-marquee)
-  - [Getting set up](#getting-set-up)
-    - [Install](#install)
-    - [Import the CSS](#import-the-css)
-  - [Usage](#usage)
-  - [Props](#props)
-  - [Styling](#styling)
-  - [Reduced motion](#reduced-motion)
+- [Getting set up](#getting-set-up)
+  - [Install](#install)
+  - [Import the CSS](#import-the-css)
+- [Usage](#usage)
+- [Props](#props)
+- [Styling](#styling)
+- [Reduced motion](#reduced-motion)
 
 ## Getting set up
 
@@ -39,9 +38,9 @@ const YourComponent = () => {
       prefersReducedMotion={prefersReducedMotion}
       reducedMotionSpeed={20}
     >
-      <img src="image-1.png" alt="">
-      <img src="image-2.png" alt="">
-      <img src="image-3.png" alt="">
+      <img src="image-1.png" alt="" />
+      <img src="image-2.png" alt="" />
+      <img src="image-3.png" alt="" />
     </Marquee>
   )
 }
@@ -63,4 +62,4 @@ This component uses the [BEM methodology](https://getbem.com/) for CSS className
 
 ## Reduced motion
 
-Use the `prefersReducedMotion` and `renderReducedMotionFallback` props to serve up a reduced motion experience for your users who have that option enabled on their systems. The boolean `prefersReducedMotion` prop can be derived via the browser's `matchMedia API`, if true the marquee defaults to a **much** slower speed, unless `reducedMotionSpeed` is passed. This workflow is demonstrated in the [Usage](#usage) section above.
+Use the `prefersReducedMotion` prop to serve up a reduced motion experience for your users who have that option enabled on their systems. The boolean `prefersReducedMotion` prop can be derived via the browser's `matchMedia API`, if true the marquee defaults to a **much** slower speed, unless `reducedMotionSpeed` is passed. This workflow is demonstrated in the [Usage](#usage) section above.
