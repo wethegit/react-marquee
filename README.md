@@ -37,7 +37,7 @@ const YourComponent = () => {
     <Marquee
       className={"marquee--modifier-class"}
       prefersReducedMotion={prefersReducedMotion}
-      reduceMotionSpeed={20}
+      reducedMotionSpeed={20}
     >
       <img src="image-1.png" alt="">
       <img src="image-2.png" alt="">
@@ -49,13 +49,13 @@ const YourComponent = () => {
 
 ## Props
 
-| Prop                 | Type    | Default value | Description                                                                                                                                                           |
-| -------------------- | ------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| className            | String  |               | Optional class added to the parent element.                                                                                                                           |
-| speed                | Number  | 50            | Controls the speed of the marquee animation. If prefersReducedMotion is true, speed defaults to `reduceMotionSpeed`.                                                  |
-| reduceMotionSpeed    | Number  | 20            | A customisable value used to set the speed of the component if `prefersReducedMotion` is true.                                                                        |
-| prefersReducedMotion | Boolean | false         | Whether the user prefers reduced motion. If `true`, the component will default to a much slower speed, unless a custom speed is specified using: `reduceMotionSpeed`. |
-| children             | Node    |               | The child elements rendered within the component. In the example above these are images, however they can be any type of element.                                     |
+| Prop                 | Type    | Default value | Description                                                                                                                                                            |
+| -------------------- | ------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| className            | String  |               | Optional class added to the parent element.                                                                                                                            |
+| speed                | Number  | 50            | Controls the speed of the marquee animation. If prefersReducedMotion is true, speed defaults to `reducedMotionSpeed`.                                                  |
+| reducedMotionSpeed   | Number  | 20            | A customisable value used to set the speed of the component if `prefersReducedMotion` is true.                                                                         |
+| prefersReducedMotion | Boolean | false         | Whether the user prefers reduced motion. If `true`, the component will default to a much slower speed, unless a custom speed is specified using: `reducedMotionSpeed`. |
+| children             | Node    |               | The child elements rendered within the component. In the example above these are images, however they can be any type of element.                                      |
 
 ## Styling
 
@@ -63,4 +63,4 @@ This component uses the [BEM methodology](https://getbem.com/) for CSS className
 
 ## Reduced motion
 
-Use the `prefersReducedMotion` and `renderReducedMotionFallback` props to serve up a reduced motion experience for your users who have that option enabled on their systems. The boolean `prefersReducedMotion` prop can be derived via the browser's `matchMedia API`, if true the marquee defaults to a **much** slower speed, unless `reduceMotionSpeed` is passed. This workflow is demonstrated in the [Usage](#usage) section above.
+Use the `prefersReducedMotion` and `renderReducedMotionFallback` props to serve up a reduced motion experience for your users who have that option enabled on their systems. The boolean `prefersReducedMotion` prop can be derived via the browser's `matchMedia API`, if true the marquee defaults to a **much** slower speed, unless `reducedMotionSpeed` is passed. This workflow is demonstrated in the [Usage](#usage) section above.
