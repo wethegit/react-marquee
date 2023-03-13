@@ -11,7 +11,7 @@ import "./marquee.scss"
 export const Marquee = ({
   speed = 50,
   reducedMotionSpeed = 20,
-  prefersReducedMotion,
+  prefersReducedMotion = false,
   children,
   className,
 }) => {
@@ -105,8 +105,8 @@ export const Marquee = ({
   )
 }
 
-Marquee.defaultProps = {
-  prefersReducedMotion: false,
+Marquee.PropTypes = {
+  prefersReducedMotion: PropTypes.bool.isRequired,
   className: PropTypes.string,
   speed: PropTypes.number,
   reducedMotionSpeed: PropTypes.number,
