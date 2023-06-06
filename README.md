@@ -34,13 +34,13 @@ const YourComponent = () => {
 
   return (
     <Marquee
-      className={"marquee--modifier-class"}
+      className="marquee--modifier-class"
       prefersReducedMotion={prefersReducedMotion}
       reducedMotionSpeed={20}
     >
-      <img src="image-1.png" alt="" />
-      <img src="image-2.png" alt="" />
-      <img src="image-3.png" alt="" />
+      <img src="image-1.png" alt="" width="500" height="500" />
+      <img src="image-2.png" alt="" width="500" height="500" />
+      <img src="image-3.png" alt="" width="500" height="500" />
     </Marquee>
   )
 }
