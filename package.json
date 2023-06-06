@@ -1,7 +1,7 @@
 {
   "name": "@wethegit/react-marquee",
-  "version": "1.0.2",
-  "description": "Viewport-aware auto-playing video component for use in React projects.",
+  "version": "1.0.0",
+  "description": "",
   "files": [
     "dist"
   ],
