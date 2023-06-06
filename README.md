@@ -21,7 +21,7 @@ npm install @wethegit/react-marquee
 Import this wherever it makes sense to, based on your project structure:
 
 ```bash
-import "@wethegit/react-marquee/dist/main.css"
+import "@wethegit/react-marquee/style.css"
 ```
 
 ## Usage
