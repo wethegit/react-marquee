@@ -1,11 +1,8 @@
-// packages
 import PropTypes from "prop-types"
+import { useState, useRef, useEffect, useCallback } from "react"
 
-import { useState, useRef, useEffect } from "react"
+import { classnames } from "./utils/classnames"
 
-import { classnames } from "../lib/classnames"
-
-// styles
 import "./marquee.scss"
 
 export const Marquee = ({
@@ -23,7 +20,7 @@ export const Marquee = ({
   const marquee = useRef()
   const resizeTimer = useRef()
 
-  const getNumber = () => {
+  const getNumber = useCallback(() => {
     const containerWidth = container.current.clientWidth
     const marqueeWidth = marquee.current.clientWidth
 
@@ -52,7 +49,7 @@ export const Marquee = ({
     } else {
       setDuration(marqueeWidth / speedAmount)
     }
-  }
+  }, [prefersReducedMotion, reducedMotionSpeed, speed])
 
   const getMarquees = () => {
     // For each marquee needed to fill the extra space, we pushed the blow markup
@@ -85,7 +82,7 @@ export const Marquee = ({
     return () => {
       window.removeEventListener("resize", handleResize)
     }
-  }, [])
+  }, [getNumber])
 
   return (
     <div
@@ -105,7 +102,7 @@ export const Marquee = ({
   )
 }
 
-Marquee.PropTypes = {
+Marquee.propTypes = {
   prefersReducedMotion: PropTypes.bool.isRequired,
   className: PropTypes.string,
   speed: PropTypes.number,

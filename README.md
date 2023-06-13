@@ -21,7 +21,7 @@ npm install @wethegit/react-marquee
 Import this wherever it makes sense to, based on your project structure:
 
 ```bash
-import "@wethegit/react-marquee/dist/main.css"
+import "@wethegit/react-marquee/style.css"
 ```
 
 ## Usage
@@ -34,13 +34,13 @@ const YourComponent = () => {
 
   return (
     <Marquee
-      className={"marquee--modifier-class"}
+      className="marquee--modifier-class"
       prefersReducedMotion={prefersReducedMotion}
       reducedMotionSpeed={20}
     >
-      <img src="image-1.png" alt="" />
-      <img src="image-2.png" alt="" />
-      <img src="image-3.png" alt="" />
+      <img src="image-1.png" alt="" width="500" height="500" />
+      <img src="image-2.png" alt="" width="500" height="500" />
+      <img src="image-3.png" alt="" width="500" height="500" />
     </Marquee>
   )
 }
