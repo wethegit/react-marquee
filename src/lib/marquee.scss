@@ -1,7 +1,14 @@
+.marquee,
+.marquee__slide {
+  display: grid;
+  grid-auto-flow: column;
+}
+
 .marquee {
-  animation: scroll var(--duration) linear infinite;
+  animation: scroll var(--duration) linear infinite var(--animation-state, running);
   position: relative;
-  white-space: nowrap;
+  display: grid;
+  grid-auto-flow: column;
 
   @keyframes scroll {
     0% {
@@ -12,9 +19,4 @@
       transform: translateX(calc(var(--marquee-width) * -1px));
     }
   }
-}
-
-.marquee__slide {
-  display: inline-block;
-  width: max-content;
 }

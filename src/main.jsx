@@ -6,26 +6,42 @@ import { Marquee } from "./lib"
 
 function App() {
   return (
-    <Marquee reducedMotionSpeed={20}>
+    <>
+      <h1>Default</h1>
+      <Marquee speed={100} reducedMotionSpeed={20}>
+        <Slide />
+      </Marquee>
+
+      <h1>Paused</h1>
+      <Marquee play={false}>
+        <Slide />
+      </Marquee>
+    </>
+  )
+}
+
+function Slide() {
+  return (
+    <>
       <img
-        src="https://images.unsplash.com/photo-1680212703757-2565f02a653e?auto=format&fit=crop&w=1000&height=500&q=80"
+        src="https://source.unsplash.com/random/200x400"
         alt=""
-        width="1000"
+        width="200"
+        height="400"
+      />
+      <img
+        src="https://source.unsplash.com/random/500x500"
+        alt=""
+        width="500"
         height="500"
       />
       <img
-        src="https://images.unsplash.com/photo-1663320858344-22507e90ab30?auto=format&fit=crop&w=1000&height=500&q=80"
+        src="https://source.unsplash.com/random/640x360"
         alt=""
-        width="1000"
-        height="500"
+        width="640"
+        height="360"
       />
-      <img
-        src="https://images.unsplash.com/photo-1656200088379-5b725a1bd4fe?auto=format&fit=crop&w=1000&height=500&q=80"
-        alt=""
-        width="1000"
-        height="500"
-      />
-    </Marquee>
+    </>
   )
 }
 
