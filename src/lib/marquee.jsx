@@ -47,7 +47,7 @@ export function Marquee({
     let neededAmount = Math.ceil(containerWidth / marqueeWidth) * 2 - 1
 
     // check if needed ammount if less that one, if it is set to be just 1.
-    if (neededAmount < 1) {
+    if (neededAmount < 1 || isNaN(neededAmount)) {
       neededAmount = 1
     }
 
