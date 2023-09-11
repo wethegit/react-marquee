@@ -13,7 +13,7 @@ function App() {
       </Marquee>
 
       <h1>Paused</h1>
-      <Marquee play={false}>
+      <Marquee playing={false}>
         <Slide />
       </Marquee>
     </>

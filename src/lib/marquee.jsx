@@ -12,7 +12,7 @@ import "./marquee.scss"
  * @param {number=50} props.speed - The speed of the marquee in pixels per second.
  * @param {number=20} props.reducedMotionSpeed - The speed of the marquee in pixels per second when prefersReducedMotion is true.
  * @param {boolean=false} props.prefersReducedMotion - If true, marquee will use reducedMotionSpeed instead of speed.
- * @param {boolean=true} props.play - If false, the marquee will not animate.
+ * @param {boolean=true} props.playing - If false, the marquee will not animate.
  * @param {string} props.className - Additional classnames to add to the marquee.
  * @param {React.Component} props.children - The content to be rendered inside the marquee. Will be wrapped in a div with the class of `marquee__slide`.
  *
@@ -22,7 +22,7 @@ export function Marquee({
   speed = 50,
   reducedMotionSpeed = 20,
   prefersReducedMotion = false,
-  play = true,
+  playing = true,
   children,
   className,
   ...props
@@ -111,7 +111,7 @@ export function Marquee({
       style={{
         "--marquee-width": marqueeWidth,
         "--duration": duration + `s`,
-        "--animation-state": play ? "running" : "paused",
+        "--animation-state": playing ? "running" : "paused",
       }}
     >
       <div ref={marquee} className="marquee__slide">
@@ -125,7 +125,7 @@ export function Marquee({
 
 Marquee.propTypes = {
   prefersReducedMotion: PropTypes.bool,
-  play: PropTypes.bool,
+  playing: PropTypes.bool,
   className: PropTypes.string,
   speed: PropTypes.number,
   reducedMotionSpeed: PropTypes.number,
