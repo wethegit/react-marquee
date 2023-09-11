@@ -1,11 +1,10 @@
-export const classnames = (classes = []) => {
-  if (!classes || !Array.isArray(classes) || !classes.length) return null
+export function classnames(classes) {
+  if (!classes) return null
+  if (typeof classes === "string") return classes.trim()
+  if (!Array.isArray(classes)) return null
 
-  let output = []
-
-  classes.forEach((arg) => {
-    if (typeof arg === "string") output.push(arg)
-  })
-
-  return output.join(" ")
+  return classes
+    .flat()
+    .filter((c) => typeof c === "string")
+    .join(" ")
 }

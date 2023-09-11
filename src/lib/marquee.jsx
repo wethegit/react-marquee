@@ -1,17 +1,32 @@
 import PropTypes from "prop-types"
-import { useState, useRef, useEffect, useCallback } from "react"
+import { useState, useMemo, useRef, useEffect, useCallback } from "react"
 
 import { classnames } from "./utils/classnames"
 
 import "./marquee.scss"
 
-export const Marquee = ({
+/**
+ * Infinite scrolling marquee component.
+ *
+ * @param {object} props
+ * @param {number=50} props.speed - The speed of the marquee in pixels per second.
+ * @param {number=20} props.reducedMotionSpeed - The speed of the marquee in pixels per second when prefersReducedMotion is true.
+ * @param {boolean=false} props.prefersReducedMotion - If true, marquee will use reducedMotionSpeed instead of speed.
+ * @param {boolean=true} props.playing - If false, the marquee will not animate.
+ * @param {string} props.className - Additional classnames to add to the marquee.
+ * @param {React.Component} props.children - The content to be rendered inside the marquee. Will be wrapped in a div with the class of `marquee__slide`.
+ *
+ * @returns {React.Component}
+ */
+export function Marquee({
   speed = 50,
   reducedMotionSpeed = 20,
   prefersReducedMotion = false,
+  playing = true,
   children,
   className,
-}) => {
+  ...props
+}) {
   const [marqueeWidth, setMarqueeWidth] = useState(0)
   const [duration, setDuration] = useState(0)
   const [neededAmount, setNeededAmount] = useState(1)
@@ -20,7 +35,7 @@ export const Marquee = ({
   const marquee = useRef()
   const resizeTimer = useRef()
 
-  const getNumber = useCallback(() => {
+  const setState = useCallback(() => {
     const containerWidth = container.current.clientWidth
     const marqueeWidth = marquee.current.clientWidth
 
@@ -32,7 +47,7 @@ export const Marquee = ({
     let neededAmount = Math.ceil(containerWidth / marqueeWidth) * 2 - 1
 
     // check if needed ammount if less that one, if it is set to be just 1.
-    if (neededAmount < 1) {
+    if (neededAmount < 1 || isNaN(neededAmount)) {
       neededAmount = 1
     }
 
@@ -51,8 +66,8 @@ export const Marquee = ({
     }
   }, [prefersReducedMotion, reducedMotionSpeed, speed])
 
-  const getMarquees = () => {
-    // For each marquee needed to fill the extra space, we pushed the blow markup
+  const marquees = useMemo(() => {
+    // For each marquee needed to fill the extra space, we pushed the below markup
     // to an empty array and run the getMarquees function below to render them.
     let marquees = []
 
@@ -65,45 +80,52 @@ export const Marquee = ({
     }
 
     return marquees
-  }
+  }, [children, neededAmount])
 
   useEffect(() => {
-    getNumber()
+    setState()
+
+    const { current } = container
 
     const handleResize = () => {
-      if (resizeTimer.current) clearTimeout(resizeTimer.current)
+      if (current) clearTimeout(current)
+
       resizeTimer.current = setTimeout(() => {
-        getNumber()
+        setState()
       }, 200)
     }
 
     window.addEventListener("resize", handleResize)
 
     return () => {
+      clearTimeout(current)
       window.removeEventListener("resize", handleResize)
     }
-  }, [getNumber])
+  }, [setState])
 
   return (
     <div
+      {...props}
       ref={container}
       className={classnames(["marquee", className])}
       style={{
         "--marquee-width": marqueeWidth,
         "--duration": duration + `s`,
+        "--animation-state": playing ? "running" : "paused",
       }}
     >
       <div ref={marquee} className="marquee__slide">
         {children}
       </div>
 
-      {getMarquees()}
+      {marquees}
     </div>
   )
 }
 
 Marquee.propTypes = {
-  prefersReducedMotion: PropTypes.bool.isRequired,
+  prefersReducedMotion: PropTypes.bool,
+  playing: PropTypes.bool,
   className: PropTypes.string,
   speed: PropTypes.number,
   reducedMotionSpeed: PropTypes.number,
