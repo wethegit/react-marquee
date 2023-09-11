@@ -67,7 +67,7 @@ export function Marquee({
   }, [prefersReducedMotion, reducedMotionSpeed, speed])
 
   const marquees = useMemo(() => {
-    // For each marquee needed to fill the extra space, we pushed the blow markup
+    // For each marquee needed to fill the extra space, we pushed the below markup
     // to an empty array and run the getMarquees function below to render them.
     let marquees = []
 
