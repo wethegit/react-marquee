@@ -28,7 +28,7 @@ export function Marquee({
   ...props
 }) {
   const [marqueeWidth, setMarqueeWidth] = useState(0)
-  const [duration, setDuration] = useState(0)
+  const [duration, setDuration] = useState(1)
   const [neededAmount, setNeededAmount] = useState(1)
 
   const container = useRef()
@@ -110,7 +110,7 @@ export function Marquee({
       className={classnames(["marquee", className])}
       style={{
         "--marquee-width": marqueeWidth,
-        "--duration": duration + `s`,
+        "--duration": `${duration}s`,
         "--animation-state": playing ? "running" : "paused",
       }}
     >
