@@ -5,7 +5,10 @@
 }
 
 .marquee {
-  animation: scroll var(--duration) linear infinite var(--animation-state, running);
+  &.is-playing {
+    animation: scroll var(--duration) linear infinite var(--animation-state, running);
+  }
+
   position: relative;
   display: grid;
   grid-auto-flow: column;

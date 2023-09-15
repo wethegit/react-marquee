@@ -28,8 +28,9 @@ export function Marquee({
   ...props
 }) {
   const [marqueeWidth, setMarqueeWidth] = useState(0)
-  const [duration, setDuration] = useState(1)
+  const [duration, setDuration] = useState(0)
   const [neededAmount, setNeededAmount] = useState(1)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const container = useRef()
   const marquee = useRef()
@@ -64,6 +65,8 @@ export function Marquee({
     } else {
       setDuration(marqueeWidth / speedAmount)
     }
+
+    setIsPlaying(playing)
   }, [prefersReducedMotion, reducedMotionSpeed, speed])
 
   const marquees = useMemo(() => {
@@ -107,11 +110,11 @@ export function Marquee({
     <div
       {...props}
       ref={container}
-      className={classnames(["marquee", className])}
+      className={classnames(["marquee", isPlaying && "is-playing", className])}
       style={{
         "--marquee-width": marqueeWidth,
         "--duration": `${duration}s`,
-        "--animation-state": playing ? "running" : "paused",
+        "--animation-state": isPlaying ? "running" : "paused",
       }}
     >
       <div ref={marquee} className="marquee__slide">
