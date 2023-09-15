@@ -6,6 +6,7 @@
 
 .marquee {
   animation: scroll var(--duration) linear infinite var(--animation-state, running);
+  animation-delay: 0.01s;
   position: relative;
   display: grid;
   grid-auto-flow: column;
