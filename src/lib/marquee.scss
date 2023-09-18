@@ -6,6 +6,15 @@
 
 .marquee {
   animation: scroll var(--duration) linear infinite var(--animation-state, running);
+
+  /*
+  * On Firefox, there is an issue where the Marquee does not play unless
+  * the window is resized or the play state is toggled.
+  *
+  * Setting an animation delay is a workaround fix for this issue.
+  * A low delay of 0.01s is set so it does not interfere with the animation.
+  */
+  animation-delay: 0.01s;
   position: relative;
   display: grid;
   grid-auto-flow: column;
