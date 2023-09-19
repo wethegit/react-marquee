@@ -2,6 +2,7 @@
 .marquee__slide {
   display: grid;
   grid-auto-flow: column;
+  width: max-content;
 }
 
 .marquee {
