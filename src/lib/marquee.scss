@@ -1,8 +1,22 @@
+.marquee {
+  position: relative;
+  white-space: nowrap;
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(calc(var(--marquee-width) * -1px));
+    }
+  }
+}
+
 .marquee__slide {
   display: inline-block;
   width: max-content;
 }
-.marquee {
+
+.marquee--ready {
   /*
   * On Firefox & Safari, there was an issue where the Marquee does not play
   * unless the window is resized or the play state is toggled.
@@ -16,17 +30,5 @@
   * until marqueeWidth is larger than the default of 0 before
   * loading up the animation.
   */
-  &.ready {
-    animation: scroll var(--duration) linear infinite var(--animation-state, running);
-  }
-  position: relative;
-  white-space: nowrap;
-  @keyframes scroll {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(calc(var(--marquee-width) * -1px));
-    }
-  }
+  animation: scroll var(--duration) linear infinite var(--animation-state, running);
 }
