@@ -1,6 +1,7 @@
 .marquee {
   position: relative;
   white-space: nowrap;
+
   @keyframes scroll {
     0% {
       transform: translateX(0%);
