@@ -107,7 +107,7 @@ export function Marquee({
     <div
       {...props}
       ref={container}
-      className={classnames(["marquee", className])}
+      className={classnames(["marquee", marqueeWidth > 0 && "marquee--ready", className])}
       style={{
         "--marquee-width": marqueeWidth,
         "--duration": duration + `s`,

@@ -1,32 +1,34 @@
-.marquee,
-.marquee__slide {
-  display: grid;
-  grid-auto-flow: column;
-  width: max-content;
-}
-
 .marquee {
-  animation: scroll var(--duration) linear infinite var(--animation-state, running);
-
-  /*
-  * On Firefox, there is an issue where the Marquee does not play unless
-  * the window is resized or the play state is toggled.
-  *
-  * Setting an animation delay is a workaround fix for this issue.
-  * A low delay of 0.01s is set so it does not interfere with the animation.
-  */
-  animation-delay: 0.01s;
   position: relative;
-  display: grid;
-  grid-auto-flow: column;
-
+  white-space: nowrap;
   @keyframes scroll {
     0% {
       transform: translateX(0%);
     }
-
     100% {
       transform: translateX(calc(var(--marquee-width) * -1px));
     }
   }
+}
+
+.marquee__slide {
+  display: inline-block;
+  width: max-content;
+}
+
+.marquee--ready {
+  /*
+  * On Firefox & Safari, there was an issue where the Marquee does not play
+  * unless the window is resized or the play state is toggled.
+  *
+  * This was happening because the animation was loaded before the marqueeWidth
+  * had finished calculations, so the animation was animating
+  * with a marqueeWidth of 0. Adding an animation-delay of 0.01s
+  * fixed the issue in Firefox, but the issue still persisted in Safari.
+  *
+  * The .ready class aims to solve this issue for all cases by waiting
+  * until marqueeWidth is larger than the default of 0 before
+  * loading up the animation.
+  */
+  animation: scroll var(--duration) linear infinite var(--animation-state, running);
 }
