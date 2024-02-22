@@ -5,11 +5,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "eslint.format.enable": true,
   "eslint.nodePath": "",
-  "eslint.packageManager": "npm",
   "files.associations": {
     "*.js": "javascriptreact",
     "*.jsx": "javascriptreact",
