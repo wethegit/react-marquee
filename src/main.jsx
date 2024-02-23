@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-import React from "react"
-import ReactDOM from "react-dom"
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
 
 import { Marquee } from "./lib"
 
@@ -45,9 +44,11 @@ function Slide() {
   )
 }
 
-ReactDOM.render(
-  <React.StrictMode>
+const container = document.getElementById("root")
+const root = createRoot(container)
+
+root.render(
+  <StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </StrictMode>
 )
