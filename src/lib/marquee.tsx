@@ -1,23 +1,38 @@
-import PropTypes from "prop-types"
-import { useState, useMemo, useRef, useEffect, useCallback } from "react"
+import { useState, useMemo, useRef, useEffect, useCallback, ReactElement } from "react"
 
 import { classnames } from "./utils/classnames"
 
 import "./marquee.scss"
 
-/**
- * Infinite scrolling marquee component.
- *
- * @param {object} props
- * @param {number=50} props.speed - The speed of the marquee in pixels per second.
- * @param {number=20} props.reducedMotionSpeed - The speed of the marquee in pixels per second when prefersReducedMotion is true.
- * @param {boolean=false} props.prefersReducedMotion - If true, marquee will use reducedMotionSpeed instead of speed.
- * @param {boolean=true} props.playing - If false, the marquee will not animate.
- * @param {string} props.className - Additional classnames to add to the marquee.
- * @param {React.Component} props.children - The content to be rendered inside the marquee. Will be wrapped in a div with the class of `marquee__slide`.
- *
- * @returns {React.Component}
- */
+export interface MarqueeProps extends React.Component {
+  /**
+   * The content to be rendered inside the marquee. Will be wrapped in a div with the class of `marquee__slide`.
+   */
+  children: ReactElement
+  /**
+   * Additional classnames to add to the marquee.
+   */
+  className: string
+  /**
+   * If false, the marquee will not animate.
+   */
+  playing: boolean
+  /**
+   * If true, marquee will use reducedMotionSpeed instead of speed.
+   */
+  prefersReducedMotion: boolean
+  /**
+   * The speed of the marquee in pixels per second when prefersReducedMotion is true.
+   * Default value is 20.
+   */
+  reducedMotionSpeed: number
+  /**
+   * The speed of the marquee in pixels per second.
+   * Default value is 50.
+   */
+  speed: number
+}
+
 export function Marquee({
   speed = 50,
   reducedMotionSpeed = 20,
@@ -26,18 +41,18 @@ export function Marquee({
   children,
   className,
   ...props
-}) {
+}: MarqueeProps) {
   const [marqueeWidth, setMarqueeWidth] = useState(0)
   const [duration, setDuration] = useState(0)
   const [neededAmount, setNeededAmount] = useState(1)
 
-  const container = useRef()
-  const marquee = useRef()
-  const resizeTimer = useRef()
+  const container = useRef<HTMLDivElement>(null)
+  const marquee = useRef<HTMLDivElement>(null)
+  const resizeTimer = useRef<number>()
 
   const setState = useCallback(() => {
-    const containerWidth = container.current.clientWidth
-    const marqueeWidth = marquee.current.clientWidth
+    const containerWidth = container.current?.clientWidth || 0
+    const marqueeWidth = marquee.current?.clientWidth || 0
 
     // If prefersReducedMotion, replace speed with reducedMotionSpeed
     const speedAmount = prefersReducedMotion ? reducedMotionSpeed : speed
@@ -69,7 +84,7 @@ export function Marquee({
   const marquees = useMemo(() => {
     // For each marquee needed to fill the extra space, we pushed the below markup
     // to an empty array and run the getMarquees function below to render them.
-    let marquees = []
+    const marquees = []
 
     for (let index = 0; index < neededAmount; index++) {
       marquees.push(
@@ -85,7 +100,7 @@ export function Marquee({
   useEffect(() => {
     setState()
 
-    const { current } = container
+    const { current } = resizeTimer
 
     const handleResize = () => {
       if (current) clearTimeout(current)
@@ -108,11 +123,13 @@ export function Marquee({
       {...props}
       ref={container}
       className={classnames(["marquee", marqueeWidth > 0 && "marquee--ready", className])}
-      style={{
-        "--marquee-width": marqueeWidth,
-        "--duration": duration + `s`,
-        "--animation-state": playing ? "running" : "paused",
-      }}
+      style={
+        {
+          "--marquee-width": marqueeWidth,
+          "--duration": duration + `s`,
+          "--animation-state": playing ? "running" : "paused",
+        } as React.CSSProperties
+      }
     >
       <div ref={marquee} className="marquee__slide">
         {children}
@@ -121,13 +138,4 @@ export function Marquee({
       {marquees}
     </div>
   )
-}
-
-Marquee.propTypes = {
-  prefersReducedMotion: PropTypes.bool,
-  playing: PropTypes.bool,
-  className: PropTypes.string,
-  speed: PropTypes.number,
-  reducedMotionSpeed: PropTypes.number,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
 }
