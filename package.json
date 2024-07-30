@@ -20,7 +20,7 @@
   "scripts": {
     "start": "vite",
     "build": "npm run lint:scripts && npm run lint:styles && vite build",
-    "lint:scripts": "eslint --fix --ext .jsx,js --ignore-path .gitignore .",
+    "lint:scripts": "eslint --fix --ext .tsx,ts --ignore-path .gitignore .",
     "lint:styles": "stylelint src/**/*.{css,scss}",
     "prepare": "husky"
   },
@@ -33,7 +33,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{ts,tsx}": "eslint --fix",
     "*.{css,scss}": "stylelint --fix",
     "*": "prettier -w -u"
   },
