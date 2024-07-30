@@ -10,10 +10,12 @@
   "type": "module",
   "main": "./dist/react-marquee.umd.cjs",
   "module": "./dist/react-marquee.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-marquee.js",
-      "require": "./dist/react-marquee.umd.cjs"
+      "require": "./dist/react-marquee.umd.cjs",
+      "types": "./dist/index.d.ts"
     },
     "./style.css": "./dist/style.css"
   },
