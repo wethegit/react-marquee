@@ -54,8 +54,8 @@
   "author": "Andrew Rubin <andrew@wethecollective.com> (https://wethecollective.com)",
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "~9.1.0",
@@ -82,6 +82,8 @@
     "react-dom": "17 - 18"
   },
   "dependencies": {
-    "prop-types": "~15.8.1"
+    "@types/node": "^22.0.0",
+    "prop-types": "~15.8.1",
+    "typescript": "^5.5.4"
   }
 }
