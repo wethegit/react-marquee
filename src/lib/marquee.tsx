@@ -33,6 +33,8 @@ export interface MarqueeProps extends React.Component {
   speed: number
 }
 
+type Timer = ReturnType<typeof setTimeout>
+
 export function Marquee({
   speed = 50,
   reducedMotionSpeed = 20,
@@ -48,7 +50,7 @@ export function Marquee({
 
   const container = useRef<HTMLDivElement>(null)
   const marquee = useRef<HTMLDivElement>(null)
-  const resizeTimer = useRef<number>()
+  const resizeTimer = useRef<Timer>()
 
   const setState = useCallback(() => {
     const containerWidth = container.current?.clientWidth || 0
