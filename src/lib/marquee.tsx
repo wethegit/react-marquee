@@ -6,14 +6,6 @@ import "./marquee.scss"
 
 export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
-   * The content to be rendered inside the marquee. Will be wrapped in a div with the class of `marquee__slide`.
-   */
-  children: ReactElement
-  /**
-   * Additional classnames to add to the marquee.
-   */
-  className: string
-  /**
    * If false, the marquee will not animate.
    */
   playing: boolean
