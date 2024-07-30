@@ -4,7 +4,7 @@ import { classnames } from "./utils/classnames"
 
 import "./marquee.scss"
 
-export interface MarqueeProps extends React.Component {
+export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The content to be rendered inside the marquee. Will be wrapped in a div with the class of `marquee__slide`.
    */
