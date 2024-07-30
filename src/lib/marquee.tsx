@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useEffect, useCallback, ReactElement } from "react"
+import { useState, useMemo, useRef, useEffect, useCallback } from "react"
 
 import { classnames } from "./utils/classnames"
 
@@ -7,22 +7,24 @@ import "./marquee.scss"
 export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * If false, the marquee will not animate.
+   * Default value is true.
    */
-  playing: boolean
+  playing?: boolean
   /**
    * If true, marquee will use reducedMotionSpeed instead of speed.
+   * Default value is false.
    */
-  prefersReducedMotion: boolean
+  prefersReducedMotion?: boolean
   /**
    * The speed of the marquee in pixels per second when prefersReducedMotion is true.
    * Default value is 20.
    */
-  reducedMotionSpeed: number
+  reducedMotionSpeed?: number
   /**
    * The speed of the marquee in pixels per second.
    * Default value is 50.
    */
-  speed: number
+  speed?: number
 }
 
 type Timer = ReturnType<typeof setTimeout>
