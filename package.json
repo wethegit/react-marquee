@@ -20,6 +20,9 @@
   "scripts": {
     "start": "vite",
     "build": "npm run lint:scripts && npm run lint:styles && vite build",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "npm run build && changeset publish",
     "lint:scripts": "eslint --fix --ext .jsx,js --ignore-path .gitignore .",
     "lint:styles": "stylelint src/**/*.{css,scss}",
     "prepare": "husky"
