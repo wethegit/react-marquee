@@ -25,6 +25,7 @@
     "release": "npm run build && changeset publish",
     "lint:scripts": "eslint --fix --ext .jsx,js --ignore-path .gitignore .",
     "lint:styles": "stylelint src/**/*.{css,scss}",
+    "lint": "npm run lint:scripts && npm run lint:styles",
     "prepare": "husky"
   },
   "publishConfig": {
@@ -85,6 +86,7 @@
     "react-dom": "17 - 18"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.7",
     "prop-types": "~15.8.1"
   }
 }
