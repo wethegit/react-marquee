@@ -22,24 +22,9 @@ function App() {
 function Slide() {
   return (
     <>
-      <img
-        src="https://source.unsplash.com/random/200x400"
-        alt=""
-        width="200"
-        height="400"
-      />
-      <img
-        src="https://source.unsplash.com/random/500x500"
-        alt=""
-        width="500"
-        height="500"
-      />
-      <img
-        src="https://source.unsplash.com/random/640x360"
-        alt=""
-        width="640"
-        height="360"
-      />
+      <img src="https://unsplash.it/200/400?random" alt="" width="200" height="400" />
+      <img src="https://unsplash.it/500/500?random" alt="" width="500" height="500" />
+      <img src="https://unsplash.it/640/360?random" alt="" width="640" height="360" />
     </>
   )
 }
