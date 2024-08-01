@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "@wethegit/react-marquee"
+      "repo": "wethegit/react-marquee"
     }
   ],
   "commit": false,
