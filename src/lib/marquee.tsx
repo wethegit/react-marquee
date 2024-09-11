@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useEffect, useCallback } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 
 import { classnames } from "./utils/classnames"
 
@@ -46,7 +46,7 @@ export function Marquee({
   const marquee = useRef<HTMLDivElement>(null)
   const resizeTimer = useRef<Timer>()
 
-  const setState = useCallback(() => {
+  const updateState = useCallback(() => {
     const containerWidth = container.current?.clientWidth || 0
     const marqueeWidth = marquee.current?.clientWidth || 0
 
@@ -77,42 +77,26 @@ export function Marquee({
     }
   }, [prefersReducedMotion, reducedMotionSpeed, speed])
 
-  const marquees = useMemo(() => {
-    // For each marquee needed to fill the extra space, we pushed the below markup
-    // to an empty array and run the getMarquees function below to render them.
-    const marquees = []
-
-    for (let index = 0; index < neededAmount; index++) {
-      marquees.push(
-        <div className="marquee__slide" key={index}>
-          {children}
-        </div>
-      )
-    }
-
-    return marquees
-  }, [children, neededAmount])
-
   useEffect(() => {
-    setState()
-
-    const { current } = resizeTimer
+    updateState()
 
     const handleResize = () => {
-      if (current) clearTimeout(current)
+      if (resizeTimer.current) clearTimeout(resizeTimer.current)
 
       resizeTimer.current = setTimeout(() => {
-        setState()
+        console.log("resized")
+        updateState()
       }, 200)
     }
 
     window.addEventListener("resize", handleResize)
 
+    const timer = resizeTimer.current
     return () => {
-      clearTimeout(current)
+      clearTimeout(timer)
       window.removeEventListener("resize", handleResize)
     }
-  }, [setState])
+  }, [updateState])
 
   return (
     <div
@@ -131,7 +115,24 @@ export function Marquee({
         {children}
       </div>
 
-      {marquees}
+      <MarqueeItems neededAmount={neededAmount}>{children}</MarqueeItems>
     </div>
+  )
+}
+
+interface MarqueeItemsProps {
+  children?: React.ReactNode
+  neededAmount: number
+}
+
+function MarqueeItems({ children, neededAmount }: MarqueeItemsProps) {
+  return (
+    <>
+      {Array.from({ length: neededAmount }).map((_, index) => (
+        <div className="marquee__slide" key={index}>
+          {children}
+        </div>
+      ))}
+    </>
   )
 }
