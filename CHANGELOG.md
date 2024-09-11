@@ -1,5 +1,11 @@
 # @wethegit/react-marquee
 
+## 2.1.1
+
+### Patch Changes
+
+- [#95](https://github.com/wethegit/react-marquee/pull/95) [`b8ba89f`](https://github.com/wethegit/react-marquee/commit/b8ba89fa877451b30375377e3c93100660231da3) Thanks [@marlonmarcello](https://github.com/marlonmarcello)! - fix: ensures timer variable is properly scoped
+
 ## 2.1.0
 
 ### Minor Changes
