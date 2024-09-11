@@ -82,11 +82,7 @@ export function Marquee({
 
     const handleResize = () => {
       if (resizeTimer.current) clearTimeout(resizeTimer.current)
-
-      resizeTimer.current = setTimeout(() => {
-        console.log("resized")
-        updateState()
-      }, 200)
+      resizeTimer.current = setTimeout(updateState, 200)
     }
 
     window.addEventListener("resize", handleResize)
