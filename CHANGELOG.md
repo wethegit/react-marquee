@@ -1,5 +1,11 @@
 # @wethegit/react-marquee
 
+## 2.1.3
+
+### Patch Changes
+
+- [#129](https://github.com/wethegit/react-marquee/pull/129) [`4d4a5e3`](https://github.com/wethegit/react-marquee/commit/4d4a5e30af8c02193008e6b80cb7af8fce623d14) Add "reverse" option
+
 ## 2.1.1
 
 ### Patch Changes

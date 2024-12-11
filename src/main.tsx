@@ -11,6 +11,11 @@ function App() {
         <Slide />
       </Marquee>
 
+      <h1>Reversed</h1>
+      <Marquee speed={100} reducedMotionSpeed={20} reverse>
+        <Slide />
+      </Marquee>
+
       <h1>Paused</h1>
       <Marquee playing={false}>
         <Slide />
