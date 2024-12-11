@@ -54,7 +54,8 @@ const YourComponent = () => {
 | speed                | Number  | 50            | Controls the speed of the marquee animation. If prefersReducedMotion is true, speed defaults to `reducedMotionSpeed`.                                                  |
 | reducedMotionSpeed   | Number  | 20            | A customisable value used to set the speed of the component if `prefersReducedMotion` is true.                                                                         |
 | prefersReducedMotion | Boolean | false         | Whether the user prefers reduced motion. If `true`, the component will default to a much slower speed, unless a custom speed is specified using: `reducedMotionSpeed`. |
-| playing              | Boolean | true          | Whether the marquee animation is playing or paused.                                                                 |
+| playing              | Boolean | true          | Whether the marquee animation is playing or paused.                                                                                                                    |
+| reverse              | Boolean | false         | Whether the marquee should animate from left to right.                                                                                                                 |
 | className            | String  |               | Optional class added to the parent element.                                                                                                                            |
 | children             | Node    |               | The child elements rendered within the component. In the example above these are images, however they can be any type of element.                                      |
 
