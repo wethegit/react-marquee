@@ -34,3 +34,7 @@
   */
   animation: scroll var(--duration) linear infinite var(--animation-state, running);
 }
+
+.marquee--reverse {
+  animation-direction: reverse;
+}
