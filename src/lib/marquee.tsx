@@ -25,6 +25,10 @@ export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
    * Default value is 50.
    */
   speed?: number
+  /**
+   * Whether to animate from left to right
+   */
+  reverse?: boolean
 }
 
 type Timer = ReturnType<typeof setTimeout>
@@ -34,6 +38,7 @@ export function Marquee({
   reducedMotionSpeed = 20,
   prefersReducedMotion = false,
   playing = true,
+  reverse,
   children,
   className,
   ...props
@@ -98,7 +103,12 @@ export function Marquee({
     <div
       {...props}
       ref={container}
-      className={classnames(["marquee", marqueeWidth > 0 && "marquee--ready", className])}
+      className={classnames([
+        "marquee",
+        marqueeWidth > 0 && "marquee--ready",
+        reverse && "marquee--reverse",
+        className,
+      ])}
       style={
         {
           "--marquee-width": marqueeWidth,
