@@ -1,5 +1,11 @@
 # @wethegit/react-marquee
 
+## 2.2.0
+
+### Minor Changes
+
+- [#141](https://github.com/wethegit/react-marquee/pull/141) [`a61ab67`](https://github.com/wethegit/react-marquee/commit/a61ab6714527dd116080344e57c1d68e491e7343) Thanks [@marlonmarcello](https://github.com/marlonmarcello)! - Updates React version support
+
 ## 2.1.3
 
 ### Patch Changes
