@@ -64,18 +64,27 @@ export function Marquee({
   const updateState = useCallback(() => {
     const containerWidth = container.current?.clientWidth || 0
     const marqueeWidth = marquee.current?.clientWidth || 0
+
+    // If prefersReducedMotion, replace speed with reducedMotionSpeed
     const speedAmount = prefersReducedMotion ? reducedMotionSpeed : speed
 
-    // Calculate the number of copies needed for a seamless loop
+    // Divide the container width, by the marquee width and round it up
+    // to give us the ammount of items needed to fill the container.
     let neededAmount = Math.ceil(containerWidth / marqueeWidth) * 2 - 1
+
+    // check if needed ammount if less that one, if it is set to be just 1.
     if (neededAmount < 1 || isNaN(neededAmount)) {
       neededAmount = 1
     }
+
+    // Set the needed ammount to state.
     setNeededAmount(neededAmount)
 
-    // Set the marquee width (measured width of one slide)
+    // Set marquee width in state so we can use it for the`--marquee-width`
+    // inline style.
     setMarqueeWidth(marqueeWidth)
 
+    // Set duration speed, which is used below in the --duration inline style.
     // Include padding in the total distance
     setDuration((marqueeWidth + padding) / speedAmount)
   }, [prefersReducedMotion, reducedMotionSpeed, speed, padding])
