@@ -4,11 +4,11 @@
 
   @keyframes scroll {
     0% {
-      transform: translateX(0%);
+      transform: translateX(calc(var(--padding) * -1px));
     }
 
     100% {
-      transform: translateX(calc(var(--marquee-width) * -1px));
+      transform: translateX(calc((var(--padding) + var(--marquee-width)) * -1px));
     }
   }
 }
