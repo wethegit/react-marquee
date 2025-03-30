@@ -34,7 +34,7 @@ export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * Extra spacing in pixels that the slide should travel beyond its width.
    * This ensures the slide is completely offscreen before the loop restarts.
-   * Default value is 50.
+   * Default value is 10.
    */
   padding?: number
 }
