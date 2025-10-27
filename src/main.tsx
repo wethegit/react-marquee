@@ -27,9 +27,9 @@ function App() {
 function Slide() {
   return (
     <>
-      <img src="https://unsplash.it/200/400?random" alt="" width="200" height="400" />
-      <img src="https://unsplash.it/500/500?random" alt="" width="500" height="500" />
-      <img src="https://unsplash.it/640/360?random" alt="" width="640" height="360" />
+      <img src="https://placehold.co/200x400/000/FFF" alt="" width="200" height="400" />
+      <img src="https://placehold.co/500/EEE/000" alt="" width="500" height="500" />
+      <img src="https://placehold.co/640x360/888/FFF" alt="" width="640" height="360" />
     </>
   )
 }
