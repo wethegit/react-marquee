@@ -64,8 +64,8 @@ export function Marquee({
     // to give us the ammount of items needed to fill the container.
     let neededAmount = Math.ceil(containerWidth / marqueeWidth) * 2 - 1
 
-    // check if needed ammount if less that one, if it is set to be just 1.
-    if (neededAmount < 1 || isNaN(neededAmount)) {
+    // check if needed amount is less than one, infininity or not a valid number, setting the value to be just 1.
+    if (neededAmount < 1 || isNaN(neededAmount) || neededAmount === Infinity) {
       neededAmount = 1
     }
 
@@ -85,6 +85,10 @@ export function Marquee({
   }, [prefersReducedMotion, reducedMotionSpeed, speed])
 
   useEffect(() => {
+    const el = container.current
+
+    if (!el) return
+
     updateState()
 
     const handleResize = () => {
@@ -92,12 +96,26 @@ export function Marquee({
       resizeTimer.current = setTimeout(updateState, 200)
     }
 
-    window.addEventListener("resize", handleResize)
+    // Using resize observer to observe size changes of the element
+    if (typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(() => {
+        handleResize()
+      })
 
-    const timer = resizeTimer.current
-    return () => {
-      clearTimeout(timer)
-      window.removeEventListener("resize", handleResize)
+      ro.observe(el)
+
+      return () => {
+        if (resizeTimer.current) clearTimeout(resizeTimer.current)
+        ro.disconnect()
+      }
+    } else {
+      // Keeping this as fallback if resize observer is not supported
+      window.addEventListener("resize", handleResize)
+
+      return () => {
+        if (resizeTimer.current) clearTimeout(resizeTimer.current)
+        window.removeEventListener("resize", handleResize)
+      }
     }
   }, [updateState])
 
