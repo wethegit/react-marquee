@@ -97,25 +97,15 @@ export function Marquee({
     }
 
     // Using resize observer to observe size changes of the element
-    if (typeof ResizeObserver !== "undefined") {
-      const ro = new ResizeObserver(() => {
-        handleResize()
-      })
+    const ro = new ResizeObserver(() => {
+      handleResize()
+    })
 
-      ro.observe(el)
+    ro.observe(el)
 
-      return () => {
-        if (resizeTimer.current) clearTimeout(resizeTimer.current)
-        ro.disconnect()
-      }
-    } else {
-      // Keeping this as fallback if resize observer is not supported
-      window.addEventListener("resize", handleResize)
-
-      return () => {
-        if (resizeTimer.current) clearTimeout(resizeTimer.current)
-        window.removeEventListener("resize", handleResize)
-      }
+    return () => {
+      if (resizeTimer.current) clearTimeout(resizeTimer.current)
+      ro.disconnect()
     }
   }, [updateState])
 
