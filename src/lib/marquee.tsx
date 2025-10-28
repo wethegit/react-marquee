@@ -31,6 +31,12 @@ export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
    * Whether to animate from left to right
    */
   reverse?: boolean
+  /**
+   * Extra spacing in pixels that the slide should travel beyond its width.
+   * This ensures the slide is completely offscreen before the loop restarts.
+   * Default value is 10.
+   */
+  padding?: number
 }
 
 type Timer = ReturnType<typeof setTimeout>
@@ -40,11 +46,13 @@ export function Marquee({
   reducedMotionSpeed = 20,
   prefersReducedMotion = false,
   playing = true,
+  padding = 10,
   reverse,
   children,
   className,
   ...props
 }: MarqueeProps) {
+  // const [containerWidth, setContainerWidth] = useState(0)
   const [marqueeWidth, setMarqueeWidth] = useState(0)
   const [duration, setDuration] = useState(0)
   const [neededAmount, setNeededAmount] = useState(1)
@@ -77,12 +85,9 @@ export function Marquee({
     setMarqueeWidth(marqueeWidth)
 
     // Set duration speed, which is used below in the --duration inline style.
-    if (marqueeWidth < containerWidth) {
-      setDuration(containerWidth / speedAmount)
-    } else {
-      setDuration(marqueeWidth / speedAmount)
-    }
-  }, [prefersReducedMotion, reducedMotionSpeed, speed])
+    // Include padding in the total distance
+    setDuration((marqueeWidth + padding) / speedAmount)
+  }, [prefersReducedMotion, reducedMotionSpeed, speed, padding])
 
   useEffect(() => {
     updateState()
@@ -113,9 +118,10 @@ export function Marquee({
       ])}
       style={
         {
-          "--marquee-width": marqueeWidth,
+          "--marquee-width": `${Math.floor(marqueeWidth)}`,
           "--duration": duration + `s`,
           "--animation-state": playing ? "running" : "paused",
+          "--padding": padding,
         } as React.CSSProperties
       }
     >
