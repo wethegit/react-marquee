@@ -64,7 +64,6 @@ export function Marquee({
     // to give us the ammount of items needed to fill the container.
     let neededAmount = Math.ceil(containerWidth / marqueeWidth) * 2 - 1
 
-    // check if needed amount is less than one, infininity or not a valid number, setting the value to be just 1.
     if (neededAmount < 1 || isNaN(neededAmount) || neededAmount === Infinity) {
       neededAmount = 1
     }
@@ -96,7 +95,6 @@ export function Marquee({
       resizeTimer.current = setTimeout(updateState, 200)
     }
 
-    // Using resize observer to observe size changes of the element
     const ro = new ResizeObserver(() => {
       handleResize()
     })
