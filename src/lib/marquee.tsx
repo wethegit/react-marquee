@@ -95,9 +95,7 @@ export function Marquee({
       resizeTimer.current = setTimeout(updateState, 200)
     }
 
-    const ro = new ResizeObserver(() => {
-      handleResize()
-    })
+    const ro = new ResizeObserver(handleResize)
 
     ro.observe(el)
 
