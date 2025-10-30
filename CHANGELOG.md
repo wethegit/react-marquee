@@ -1,5 +1,17 @@
 # @wethegit/react-marquee
 
+## 3.0.0
+
+### Major Changes
+
+- [#164](https://github.com/wethegit/react-marquee/pull/164) [`52c1da9`](https://github.com/wethegit/react-marquee/commit/52c1da95fdef818232d3f1d23160606c835da5e6) Thanks [@pravton](https://github.com/pravton)! - Fixed width calculation issues for dynamic and flex-based content.
+
+  Implemented ResizeObserver for responsive dimension recalculations.
+
+  Removed legacy event listeners.
+
+  Added fallback to ensure `neededAmount` defaults to `1` when calculations yield Infinity, preventing edge-case crashes.
+
 ## 2.2.0
 
 ### Minor Changes
