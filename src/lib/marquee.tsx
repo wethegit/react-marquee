@@ -64,8 +64,7 @@ export function Marquee({
     // to give us the ammount of items needed to fill the container.
     let neededAmount = Math.ceil(containerWidth / marqueeWidth) * 2 - 1
 
-    // check if needed ammount if less that one, if it is set to be just 1.
-    if (neededAmount < 1 || isNaN(neededAmount)) {
+    if (neededAmount < 1 || isNaN(neededAmount) || neededAmount === Infinity) {
       neededAmount = 1
     }
 
@@ -85,6 +84,10 @@ export function Marquee({
   }, [prefersReducedMotion, reducedMotionSpeed, speed])
 
   useEffect(() => {
+    const el = container.current
+
+    if (!el) return
+
     updateState()
 
     const handleResize = () => {
@@ -92,12 +95,13 @@ export function Marquee({
       resizeTimer.current = setTimeout(updateState, 200)
     }
 
-    window.addEventListener("resize", handleResize)
+    const ro = new ResizeObserver(handleResize)
 
-    const timer = resizeTimer.current
+    ro.observe(el)
+
     return () => {
-      clearTimeout(timer)
-      window.removeEventListener("resize", handleResize)
+      if (resizeTimer.current) clearTimeout(resizeTimer.current)
+      ro.disconnect()
     }
   }, [updateState])
 
