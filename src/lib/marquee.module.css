@@ -1,24 +1,24 @@
-.marquee {
-  position: relative;
-  white-space: nowrap;
+@keyframes wtc-marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
 
-  @keyframes scroll {
-    0% {
-      transform: translateX(0%);
-    }
-
-    100% {
-      transform: translateX(calc(var(--marquee-width) * -1px));
-    }
+  100% {
+    transform: translateX(calc(var(--marquee-width) * -1px));
   }
 }
 
-.marquee__slide {
+.Marquee {
+  position: relative;
+  white-space: nowrap;
+}
+
+.Marquee__Slide {
   display: inline-block;
   width: max-content;
 }
 
-.marquee--ready {
+.Marquee--ready {
   /*
   * On Firefox & Safari, there was an issue where the Marquee does not play
   * unless the window is resized or the play state is toggled.
@@ -32,9 +32,10 @@
   * until marqueeWidth is larger than the default of 0 before
   * loading up the animation.
   */
-  animation: scroll var(--duration) linear infinite var(--animation-state, running);
+  animation: wtc-marquee-scroll var(--duration) linear infinite
+    var(--animation-state, running);
 }
 
-.marquee--reverse {
+.Marquee--reverse {
   animation-direction: reverse;
 }
