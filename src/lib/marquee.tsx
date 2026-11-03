@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react"
 
 import { classnames } from "./utils/classnames"
 
-import "./marquee.scss"
+import styles from "./marquee.module.css"
 
 export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
@@ -110,9 +110,9 @@ export function Marquee({
       {...props}
       ref={container}
       className={classnames([
-        "marquee",
-        marqueeWidth > 0 && "marquee--ready",
-        reverse && "marquee--reverse",
+        styles.Marquee,
+        marqueeWidth > 0 && styles["Marquee--ready"],
+        reverse && styles["Marquee--reverse"],
         className,
       ])}
       style={
@@ -123,7 +123,7 @@ export function Marquee({
         } as React.CSSProperties
       }
     >
-      <div ref={marquee} className="marquee__slide">
+      <div ref={marquee} className={styles.Marquee__Slide}>
         {children}
       </div>
 
@@ -141,7 +141,7 @@ function MarqueeItems({ children, neededAmount }: MarqueeItemsProps) {
   return (
     <>
       {Array.from({ length: neededAmount }).map((_, index) => (
-        <div className="marquee__slide" key={index}>
+        <div className={styles.Marquee__Slide} key={index}>
           {children}
         </div>
       ))}

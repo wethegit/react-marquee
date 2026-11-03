@@ -5,7 +5,10 @@ import dts from "vite-plugin-dts"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dts({ rollupTypes: true, include: ["src/lib"] })],
+  plugins: [
+    react(),
+    dts({ rollupTypes: true, include: ["src/lib", "src/vite-env.d.ts"] }),
+  ],
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
