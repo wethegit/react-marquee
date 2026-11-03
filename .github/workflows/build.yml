@@ -18,6 +18,6 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: npm i
 
       - run: npm run build
