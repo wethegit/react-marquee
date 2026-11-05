@@ -1,5 +1,11 @@
 # @wethegit/react-marquee
 
+## 4.0.0
+
+### Major Changes
+
+- [#172](https://github.com/wethegit/react-marquee/pull/172) [`e83dcb5`](https://github.com/wethegit/react-marquee/commit/e83dcb555d5be10bc2bfebb5b34a73c875f6c35b) Thanks [@NicholasLancey](https://github.com/NicholasLancey)! - [FEATURE]: Updates Marquee to use CSS modules
+
 ## 3.0.0
 
 ### Major Changes
