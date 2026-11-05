@@ -1,4 +1,4 @@
-@keyframes wtc-marquee-scroll {
+@keyframes scroll {
   0% {
     transform: translateX(0%);
   }
@@ -32,8 +32,7 @@
   * until marqueeWidth is larger than the default of 0 before
   * loading up the animation.
   */
-  animation: wtc-marquee-scroll var(--duration) linear infinite
-    var(--animation-state, running);
+  animation: scroll var(--duration) linear infinite var(--animation-state, running);
 }
 
 .Marquee--reverse {
