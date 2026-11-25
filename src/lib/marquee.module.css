@@ -43,19 +43,21 @@
   * loading up the animation.
   */
   animation: scroll var(--duration) linear infinite var(--animation-state, running);
+
+  &.Marquee--vertical {
+    animation: scroll-vertical var(--duration) linear infinite
+      var(--animation-state, running);
+
+    &.Marquee--reverse {
+      animation-direction: reverse;
+    }
+  }
 }
 
 .Marquee--vertical {
-  animation: scroll-vertical var(--duration) linear infinite
-    var(--animation-state, running);
-
   .Marquee__Slide {
     display: flex;
     flex-direction: column;
-  }
-
-  .Marquee__Slide > * {
-    display: block;
   }
 }
 

@@ -32,7 +32,7 @@ export interface MarqueeProps extends React.ComponentPropsWithoutRef<"div"> {
    */
   reverse?: boolean
   /**
-   * Whether to animate vertically, from top to bottom
+   * Whether to animate vertically, from top to bottom. Direct parent node should have display: flex & a defined height (100dvh, etc)
    */
   vertical?: boolean
 }

@@ -22,23 +22,18 @@ function App() {
       </Marquee>
 
       <h1>Vertical</h1>
-      <div>
-        <Marquee
-          vertical
-          speed={100}
-          reducedMotionSpeed={20}
-          style={{ overflow: "hidden", height: "100dvh" }}
-        >
+      <div style={{ display: "flex", height: "100vh", overflow: "clip" }}>
+        <Marquee vertical speed={100} reducedMotionSpeed={20}>
           <Slide />
         </Marquee>
       </div>
 
-      {/* <h1>Vertical Reverse</h1>
-      <div style={{ overflow: "hidden", height: "100dvh" }}>
+      <h1>Vertical Reverse</h1>
+      <div style={{ display: "flex", height: "100vh", overflow: "clip" }}>
         <Marquee vertical speed={100} reducedMotionSpeed={20} reverse>
           <Slide />
         </Marquee>
-      </div> */}
+      </div>
     </>
   )
 }
