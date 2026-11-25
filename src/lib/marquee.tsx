@@ -58,21 +58,21 @@ export function Marquee({
   const marquee = useRef<HTMLDivElement>(null)
   const resizeTimer = useRef<Timer>()
 
-  const getRelevantDimensions = () => {
-    if (vertical) {
+  const updateState = useCallback(() => {
+    const getRelevantDimensions = () => {
+      if (vertical) {
+        return {
+          containerSize: container.current?.clientHeight || 0,
+          marqueeSize: marquee.current?.clientHeight || 0,
+        }
+      }
+
       return {
-        containerSize: container.current?.clientHeight || 0,
-        marqueeSize: marquee.current?.clientHeight || 0,
+        containerSize: container.current?.clientWidth || 0,
+        marqueeSize: marquee.current?.clientWidth || 0,
       }
     }
 
-    return {
-      containerSize: container.current?.clientWidth || 0,
-      marqueeSize: marquee.current?.clientWidth || 0,
-    }
-  }
-
-  const updateState = useCallback(() => {
     const { containerSize, marqueeSize } = getRelevantDimensions()
 
     // If prefersReducedMotion, replace speed with reducedMotionSpeed
@@ -80,7 +80,14 @@ export function Marquee({
 
     // Divide the container width, by the marquee width and round it up
     // to give us the ammount of items needed to fill the container.
-    let neededAmount = Math.ceil(containerSize / marqueeSize) * 2 - 1
+    const viewportSize = vertical ? window.innerHeight : window.innerWidth
+    let neededAmount =
+      Math.min(
+        Math.ceil(containerSize / marqueeSize),
+        Math.ceil(viewportSize / marqueeSize)
+      ) *
+        2 -
+      1
 
     if (neededAmount < 1 || isNaN(neededAmount) || neededAmount === Infinity) {
       neededAmount = 1
@@ -99,7 +106,7 @@ export function Marquee({
     } else {
       setDuration(marqueeSize / speedAmount)
     }
-  }, [prefersReducedMotion, reducedMotionSpeed, speed])
+  }, [prefersReducedMotion, reducedMotionSpeed, speed, vertical])
 
   useEffect(() => {
     const el = container.current
