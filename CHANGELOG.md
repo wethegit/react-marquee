@@ -1,5 +1,11 @@
 # @wethegit/react-marquee
 
+## 4.1.0
+
+### Minor Changes
+
+- [#176](https://github.com/wethegit/react-marquee/pull/176) [`c4396e1`](https://github.com/wethegit/react-marquee/commit/c4396e16e4ef9f91e27ff25203a095f99c5c26d7) Thanks [@meteoratlas](https://github.com/meteoratlas)! - Adds an optional prop to enable vertical marquee functionality.
+
 ## 4.0.0
 
 ### Major Changes
