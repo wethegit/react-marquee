@@ -57,7 +57,8 @@ const YourComponent = () => {
 | reducedMotionSpeed   | Number  | 20            | A customisable value used to set the speed of the component if `prefersReducedMotion` is true.                                                                         |
 | prefersReducedMotion | Boolean | false         | Whether the user prefers reduced motion. If `true`, the component will default to a much slower speed, unless a custom speed is specified using: `reducedMotionSpeed`. |
 | playing              | Boolean | true          | Whether the marquee animation is playing or paused.                                                                                                                    |
-| reverse              | Boolean | false         | Whether the marquee should animate from left to right.                                                                                                                 |
+| reverse              | Boolean | false         | Whether the marquee should animate from left to right (or top to bottom, if `vertical` is passed as a prop).                                                                                                                 |
+| vertical              | Boolean | false         | Whether the marquee should animate from bottom to top. __IMPORTANT__: for vertical marquees to work, the direct parent element of the marquee *must* have a defined height (100dvh, etc) and use `display: flex` (and, likely, `overflow: clip`)     
 | className            | String  |               | Optional class added to the parent element.                                                                                                                            |
 | children             | Node    |               | The child elements rendered within the component. In the example above these are images, however they can be any type of element.                                      |
 

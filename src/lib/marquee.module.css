@@ -8,6 +8,16 @@
   }
 }
 
+@keyframes scroll-vertical {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(calc(var(--marquee-width) * -1px));
+  }
+}
+
 .Marquee {
   position: relative;
   white-space: nowrap;
@@ -33,6 +43,22 @@
   * loading up the animation.
   */
   animation: scroll var(--duration) linear infinite var(--animation-state, running);
+
+  &.Marquee--vertical {
+    animation: scroll-vertical var(--duration) linear infinite
+      var(--animation-state, running);
+
+    &.Marquee--reverse {
+      animation-direction: reverse;
+    }
+  }
+}
+
+.Marquee--vertical {
+  .Marquee__Slide {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .Marquee--reverse {

@@ -20,6 +20,20 @@ function App() {
       <Marquee playing={false}>
         <Slide />
       </Marquee>
+
+      <h1>Vertical</h1>
+      <div style={{ display: "flex", height: "100vh", overflow: "clip" }}>
+        <Marquee vertical speed={100} reducedMotionSpeed={20}>
+          <Slide />
+        </Marquee>
+      </div>
+
+      <h1>Vertical Reverse</h1>
+      <div style={{ display: "flex", height: "100vh", overflow: "clip" }}>
+        <Marquee vertical speed={100} reducedMotionSpeed={20} reverse>
+          <Slide />
+        </Marquee>
+      </div>
     </>
   )
 }
